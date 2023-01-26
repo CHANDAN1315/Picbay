@@ -1,23 +1,25 @@
 import axios from 'axios'
-import React from 'react'
+// import React from 'react'
 import { useState, useEffect } from 'react'
 
-function randomImg() {
+function RandomImg() {
     const [data, setData] = useState('')
 
-    useEffect(() =>{
+    useEffect(() => {
         axios({
             method: 'GET',
-            url:'https://api.unsplash.com/photos/?client_id=dEt1q5MCaOJw-7oXpCCvNYA4gQMwgzcOZVSkWRjR3n4'
-        }).then(res =>{
+            url: `https://api.unsplash.com/photos/?client_id=${process.env.REACT_APP_API_KEY}`
+        }).then(res => {
             setData(previmg =>{
-                return [previmg, res.data.results]
+                return [...previmg, ...res.data.results]
             })
+        }).catch(e => {
+            if (axios.isCancel(e)) return
         })
-    })
-  return (
 
-  )
+    }, [])
+    console.log(data);
+    return {data}
 }
 
-export default randomImg
+export default RandomImg

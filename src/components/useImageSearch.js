@@ -18,7 +18,7 @@ function useImageSearch(query, pageNumber) {
         let cancel
         axios({
             method: 'GET',
-            url: 'https://api.unsplash.com/search/photos/?client_id=dEt1q5MCaOJw-7oXpCCvNYA4gQMwgzcOZVSkWRjR3n4',
+            url: `https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_API_KEY}`,
             params: {query: query, page: pageNumber},
             cancelToken: new axios.CancelToken(c => cancel = c)
 
