@@ -56,21 +56,17 @@ function App() {
         />
         <button className='bg-orange-400  rounded-lg cursor-pointer px-4 py-1 hover:bg-orange-500 shadow-lg' onClick={handleSearch}>Search</button>
       </div>
-      <div className=' grid grid-col-4 gap-3 w-400 h-400 '>
+      <div className=''>
         {/* {console.log(image.length)} */}
         {search ? image.map((res, index) => {
           if (image.length === index + 1) {
             return (
-              <div className=" w-400 h-400">
                 <img  src={res.urls.thumb} ref={lastImageRef} alt="imge" key={res.urls.thumb} />
-              </div>
             )
           }
           else {
             return (
-              <div className=" w-400 h-400">
                 <img src={res.urls.thumb} alt="imge" key={res.urls.thumb} />
-              </div>
             )
           }
 
